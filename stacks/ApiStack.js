@@ -7,6 +7,7 @@ export function ApiStack({ stack, app }) {
   // Create the API
   const api = new Api(stack, "AutoTraderApi", {
     defaults: {
+      authorizer: "iam",
       function: {
         permissions: [table],
         environment: {
@@ -16,10 +17,10 @@ export function ApiStack({ stack, app }) {
     },
     routes: {
       "POST /alerts": "functions/create.main",
-			"GET /alerts/{id}": "functions/get.main",
-			"GET /alerts": "functions/list.main",
-			"PUT /alerts/{id}": "functions/update.main",
-			"DELETE /alerts/{id}": "functions/delete.main",
+      "GET /alerts/{id}": "functions/get.main",
+      "GET /alerts": "functions/list.main",
+      "PUT /alerts/{id}": "functions/update.main",
+      "DELETE /alerts/{id}": "functions/delete.main",
     },
   });
 
